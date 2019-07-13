@@ -28,12 +28,23 @@ class App extends Component {
             }
         ]
     }
-  render() {
-    return (
-      <div>
-        <ContactList contacts={this.state.contacts} />
-        Hello World
-      </div>
+
+    DeleteContact = (contact) => {
+        this.setState((currentState) => ({
+            contacts: currentState.contacts.filter((c) => {
+                return c.id !== contact.id
+            })
+        }));
+    }
+
+    render() {
+        return (
+          <div>
+            <ContactList 
+                onDeleteContact={this.DeleteContact}
+                contacts={this.state.contacts} />
+            Hello World
+          </div>
     );
   }
 }

@@ -7,7 +7,28 @@ function ContactList(props) {
         {
             props.contacts.map((contact) => (
                 <li key={contact.id}>
-                    {contact.name}
+                    <div
+                        className="contact-avatar"
+                        style = {
+                            {
+                                backgroundImage: `url(${contact.avatarURL})`
+                            }
+                        }
+                    >
+                        
+                    </div>
+
+                    <div className="contact-details">
+                        {contact.name}
+                        {contact.handle}
+                    </div>
+
+                    <button 
+                        onClick={() => props.onDeleteContact(contact)}     
+                        className="contact-remove"
+                    >
+                        Remove
+                    </button>
                 </li>
             ))
         }
