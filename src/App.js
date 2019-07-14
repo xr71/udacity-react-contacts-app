@@ -43,7 +43,6 @@ class App extends Component {
             <ContactList 
                 onDeleteContact={this.DeleteContact}
                 contacts={this.state.contacts} />
-            Hello World
           </div>
     );
   }
