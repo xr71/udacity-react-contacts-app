@@ -13,7 +13,11 @@ class ContactList extends React.Component {
     };
 
     render() {
-       
+        
+        const { contacts } = this.props;
+        const { query } = this.state;
+        const { onDeleteContact } = this.props;
+
         return (
             <div className="list-contacts">
                 {JSON.stringify(this.state)
@@ -23,14 +27,14 @@ class ContactList extends React.Component {
                         className="search-contacts"
                         type="text"
                         placeholder="Search Contacts"
-                        value={ this.state.query }
+                        value={ query }
                         onChange={ (event) => this.updateQuery(event.target.value)  }
                     />
                 </div>
                 <ul className="contact-list">
                     Hello World
                 {
-                    this.props.contacts.map((contact) => (
+                    contacts.map((contact) => (
                         <li className="contact-list-item" key={contact.id}>
                             <div className="contact-avatar"
                                 style = {{ backgroundImage: `url(${contact.avatarURL})`  }}
@@ -41,7 +45,7 @@ class ContactList extends React.Component {
                                 <p>{ contact.name  }</p>
                             </div>
                             <button className="contact-remove"
-                                onClick = { () => {this.props.onDeleteContact(contact)}  }
+                                onClick = { () => {onDeleteContact(contact)}  }
                             >
                                 Remove
                             </button>
